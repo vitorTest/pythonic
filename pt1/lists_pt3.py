@@ -4,6 +4,18 @@
 from collections import deque #Fastest queue in multi-universes
 import random
 
+#
+#	LISTS COMPREHENSIONS
+#
+
+list_of_squares = [x**2 for x in range(10)]
+list_of_cubes = list(map(lambda x: x**3, range(10)))
+list_combined = [[x, y] for x in list_of_squares for y in list_of_cubes if x != y]
+
+# print("Squares: {}".format(list_of_squares))
+# print("Cubes: {}".format(list_of_cubes))
+print("The two lists combined: {}".format(list_combined))
+
 
 def list_as_stack(): 
 	"""
@@ -44,7 +56,6 @@ def list_as_queue():
 
 	print("All clients satisfied!")
 
-list_as_queue()
 
 
 
