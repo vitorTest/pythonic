@@ -8,14 +8,29 @@ import random
 #	LISTS COMPREHENSIONS
 #
 
-list_of_squares = [x**2 for x in range(10)]
-list_of_cubes = list(map(lambda x: x**3, range(10)))
-list_combined = [[x, y] for x in list_of_squares for y in list_of_cubes if x != y]
+def tst_list_comp():
+	list_of_squares = [x**2 for x in range(10)]
+	list_of_cubes = list(map(lambda x: x**3, range(10)))
+	list_combined = [[x, y] for x in list_of_squares for y in list_of_cubes if x != y]
 
-# print("Squares: {}".format(list_of_squares))
-# print("Cubes: {}".format(list_of_cubes))
-print("The two lists combined: {}".format(list_combined))
+	# print("Squares: {}".format(list_of_squares))
+	# print("Cubes: {}".format(list_of_cubes))
+	print("The two lists combined: {}".format(list_combined))
 
+def tst_nest_list():
+
+	matrix = [ 
+		[17, 73, 75, 7],
+		[11, 22, 33, 44],
+		[90, 98, 87, 76],
+		[59, 37, 49, 1]
+	]		
+
+	#transposed = [[linha[i] for linha in matrix] for i in range(4)]
+
+	#In the real world, you should prefer built-in functions to complex flow statements
+	transposed = list(zip(*matrix))
+	print(transposed)
 
 def list_as_stack(): 
 	"""
@@ -57,6 +72,4 @@ def list_as_queue():
 	print("All clients satisfied!")
 
 
-
-
-
+tst_nest_list()
