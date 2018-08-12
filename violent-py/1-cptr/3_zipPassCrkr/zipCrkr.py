@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import zipfile
+from threading import Thread
 
 # hint to ZIP - zip evilPass.zip  secretPassFile -P "secret"
 
@@ -10,7 +11,7 @@ def extractFile(zFile, password):
 		return password
 
 	except Exception as e:
-		return 
+		return
 
 def main():
 	zFile 		= zipfile.ZipFile("evilPass.zip")
@@ -18,11 +19,12 @@ def main():
 
 	for line in passFile.readlines():
 		password 	= line.strip('\n')
-		guess 		= extractFile(zFile, password)
+		t = Thread(target=extractFile, args=(zFile, password))
+		t.start()
 
-		if guess:
+		if t:
 			print("!!! BINGO !!! => The password is " + password)
 			exit(0)
-		
+
 if __name__ == '__main__':
 	main()
